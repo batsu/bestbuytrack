@@ -26,7 +26,7 @@ app = Flask('')
 
 def get_new():
 
-	response = requests.get("https://api.bestbuy.com/beta/products/openBox(sku%20in(5721600,6418597,6418599,6200722,6418598,6418600))?apiKey=XGfs8Y500LcdklehKwcFfZQh")
+	response = requests.get("https://api.bestbuy.com/beta/products/openBox(sku%20in(5721600,6418597,6418599,6200722,6418598,6418600))?apiKey=ZlmdCoCq2VFV0lRi9GVK5gM1")
 	data = response.json()
 	return data
 
