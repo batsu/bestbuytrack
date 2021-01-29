@@ -1,0 +1,74 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="300">
+
+    <title>Best Buy Macbook Air Open Box Checker</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+
+
+
+
+  <body class="bg-dark">
+
+
+  <div class="container">        
+
+    <div class="jumbotron">
+          <h1 class="heading display-5 pb-3">Best Buy Open Item Price Tracker</h1>
+           
+                    <p class="lead">Last checked at {{ time }}.</p>
+
+                    <hr class="my-4">
+
+                    <p>How to get the best deals on Open-Box Items at Best Buy!</p>
+
+                    <a class="btn btn-primary btn-lg" href="/go" role="button">Click here to update data.</a>
+
+    </div>
+
+
+                
+
+
+  <h3 class="heading display-5 pb-3 text-light">Macbook Air M1</h3>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
+  {% for x in datastr["items"] %}
+    <div class="col mb-4">
+      <div class="card">
+        <div class="card-body">
+        <div class="card-title">
+          {{ x["names"]["title"] }}
+        </div>
+        <div class="card-text">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">sku: {{ x["sku"] }}</li>
+          {% for y in x["offers"] %}
+          <li class="list-group-item">
+              {% if y["onlineAvailability"] or y["inStoreAvailability"] %}
+              <a href='{{ x["links"]["web"] }}'>{{ y["condition"] }}: {{ y["prices"]["current"]|string }}</a>
+              {% else %}
+              {{ y["condition"] }}: {{ y["prices"]["current"]|string }}</li>
+              {% endif %}
+
+          {% endfor %}
+        </ul>
+      </div>
+      </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+</div>
+           
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+
+</html>
